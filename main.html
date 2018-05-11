@@ -1,0 +1,88 @@
+<html>
+
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+<link rel="stylesheet" type="text/css" href="main_css.css">
+<meta charset="UTF-8">  
+
+</head>
+
+<body>
+
+<div class ='admin_select'>
+
+	<div class = 'room'>
+
+		<p> Select Room :
+			<div class = 'container'>
+				<select class = 'room_type'>
+					<option value=  "Double_Room"> Double Room </option>
+					<option value=  "Single_Room"> Single Room </option>
+				</select>
+			</div>
+		</p>
+	</div>
+
+	<div class = 'days'>
+		 <p> Select Days :
+			<div class = 'container'>
+				<p> From :
+					<input type="date" id="from">
+				</p>
+				<p> To :
+					<input type="date" id="to">
+				</p>
+			</div>
+		</p>
+	</div>
+
+	<div class = "filter">
+		<p> Select Filter :
+			<div class = 'container'>
+				<select id='multiple-checkboxes' multiple>
+					<option value='monday'>Monday</option>
+					<option value='tuesday'>Tuesday</option>
+					<option value='wednesday'>Wednesday</option>
+					<option value='thursday'>Thursday</option>
+					<option value='friday'>Friday</option>
+					<option value='saturday'>Saturday</option>
+					<option value='sunday'>Sunday</option>
+				</select>
+			</div>
+		</p>
+	</div>
+
+	<div class = 'price'>
+		<p> Change Price to : 
+			<div class = 'container'>
+				<input type="text" id = "price" placeholder = "Enter Price">
+			</div>
+		</p>
+	</div>
+
+	<div class = 'availability'>
+		<p> Change Availability to : 
+			<div class = 'container'>
+				<input type="text" id = "avail" placeholder = "Enter Availability">
+			</div>
+		</p>
+	</div>
+
+	<div class = 'button'>
+		<button id = 'Update' value ='Update'>
+			<p>Update</p>
+		</button>
+	</div>
+
+</div>
+
+<script  src="main_js.js"></script>
+
+</body>
+</html>

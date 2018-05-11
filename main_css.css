@@ -1,0 +1,37 @@
+.admin_select{
+	margin: auto;
+  width: 80%;
+  border: 5px solid green;
+  padding: 10px;
+}
+.container{
+	margin-left: 150px;
+	margin-top:  -50px;
+}
+.room_type{
+	padding: 7px;
+	font-size: 17px;
+}
+#from,#to{
+	padding: 6px;
+}
+p{
+	font-size: 20px;
+	font-weight: bold;
+  padding: 8px;
+}
+#price{
+  padding: 7px;
+  margin-left: 30px;
+
+}
+#avail{
+  padding: 7px;
+  margin-left: 70px;
+}
+#Update{ 
+ width: 130px;
+ height: 40px;
+ text-align: center;
+ margin-left: 190px;
+}
