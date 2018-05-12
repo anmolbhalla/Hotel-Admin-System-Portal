@@ -17,74 +17,75 @@
 
 <body>
 
-<div class ='admin_select'>
+<form name="hotel" method="post" action={% url 'values' %}>
 
-	<div class = 'room'>
+    {% csrf_token %}
 
-		<p> Select Room :
-			<div class = 'container'>
-				<select class = 'room_type'>
-					<option value=  "Double_Room"> Double Room </option>
-					<option value=  "Single_Room"> Single Room </option>
-				</select>
-			</div>
-		</p>
-	</div>
+    <div class ='admin_select'>
 
-	<div class = 'days'>
-		 <p> Select Days :
-			<div class = 'container'>
-				<p> From :
-					<input type="date" id="from">
-				</p>
-				<p> To :
-					<input type="date" id="to">
-				</p>
-			</div>
-		</p>
-	</div>
+        <div class = 'room'>
 
-	<div class = "filter">
-		<p> Select Filter :
-			<div class = 'container'>
-				<select id='multiple-checkboxes' multiple>
-					<option value='monday'>Monday</option>
-					<option value='tuesday'>Tuesday</option>
-					<option value='wednesday'>Wednesday</option>
-					<option value='thursday'>Thursday</option>
-					<option value='friday'>Friday</option>
-					<option value='saturday'>Saturday</option>
-					<option value='sunday'>Sunday</option>
-				</select>
-			</div>
-		</p>
-	</div>
+            <p> Select Room :
+                <div class = 'container'>
+                    <select class = 'room_type' name ='room_type'>
+                        <option value=  "Double_Room"> Double Room </option>
+                        <option value=  "Single_Room"> Single Room </option>
+                    </select>
+                </div>
+            </p>
+        </div>
 
-	<div class = 'price'>
-		<p> Change Price to : 
-			<div class = 'container'>
-				<input type="text" id = "price" placeholder = "Enter Price">
-			</div>
-		</p>
-	</div>
+        <div class = 'date'>
+             <p> Select Date :
+                <div class = 'container'>
+                    <p> From :
+                        <input type="date" id="from" name="from">
+                    </p>
+                    <p> To :
+                        <input type="date" id="to" name="to">
+                    </p>
+                </div>
+            </p>
+        </div>
 
-	<div class = 'availability'>
-		<p> Change Availability to : 
-			<div class = 'container'>
-				<input type="text" id = "avail" placeholder = "Enter Availability">
-			</div>
-		</p>
-	</div>
+        <div class = "filter">
+            <p> Select Days :
+                <div class = 'container'>
+                    <select id='multiple-checkboxes' multiple name="filter">
+                        <option value='monday'>Monday</option>
+                        <option value='tuesday'>Tuesday</option>
+                        <option value='wednesday'>Wednesday</option>
+                        <option value='thursday'>Thursday</option>
+                        <option value='friday'>Friday</option>
+                        <option value='saturday'>Saturday</option>
+                        <option value='sunday'>Sunday</option>
+                    </select>
+                </div>
+            </p>
+        </div>
 
-	<div class = 'button'>
-		<button id = 'Update' value ='Update'>
-			<p>Update</p>
-		</button>
-	</div>
+        <div class = 'price'>
+            <p> Change Price to :
+                <div class = 'container'>
+                    <input type="text" id = "price" placeholder = "Enter Price" name="price">
+                </div>
+            </p>
+        </div>
 
-</div>
+        <div class = 'availability'>
+            <p> Change Availability to :
+                <div class = 'container'>
+                    <input type="text" id = "avail" placeholder = "Enter Availability" name="avail">
+                </div>
+            </p>
+        </div>
 
-<script  src="{% static 'hotel_system/main_js.js' %}"></script>
+            <input type="submit" value="Update" id="Update">
+        </div>
 
+    </div>
+
+    <script  src="{% static 'hotel_system/main_js.js' %}"></script>
+</form>
 </body>
 </html>
