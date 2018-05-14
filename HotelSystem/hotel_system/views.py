@@ -4,6 +4,7 @@ from datetime import timedelta
 from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from hotel_system.models import Hotel
+from django.db import models
 from django.core import serializers
 
 def index (request):
@@ -32,6 +33,17 @@ def values (request):
     price = request.POST['price']
     avail = request.POST['avail']
 
-    answer = Hotel.objects.filter(day__in=days)
-    return HttpResponse(answer)
-    # return JsonResponse(serializers.serialize('json',answer),safe=False)
+    answer = Hotel.objects.filter(date__range=(from_date,to_date) , day__in=days)
+
+    if room == 'Double_Room':
+
+        Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_double = price , avail_double = avail)
+        return HttpResponse('Success',answer )
+
+    else :
+
+        Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_single=price,avail_single=avail)
+        return HttpResponse('Failure',answer)
+
+    # return HttpResponse(answer)
+
