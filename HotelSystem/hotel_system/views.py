@@ -2,10 +2,8 @@ from django.shortcuts import render
 import datetime
 from datetime import timedelta
 from django.shortcuts import HttpResponse
-from django.http import JsonResponse
 from hotel_system.models import Hotel
-from django.db import models
-from django.core import serializers
+
 
 def index (request):
     return render(request , 'hotel_system/main.html')
@@ -32,6 +30,7 @@ def values (request):
     days = list(request.POST.getlist('filter[]'))
     price = request.POST['price']
     avail = request.POST['avail']
+
 
     answer = Hotel.objects.filter(date__range=(from_date,to_date) , day__in=days)
 

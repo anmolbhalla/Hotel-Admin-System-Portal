@@ -27,7 +27,7 @@
 
             <p> Select Room :
                 <div class = 'container'>
-                    <select class = 'room_type' name ='room_type'>
+                    <select class = 'room_type' name ='room_type' required>
                         <option value=  "Double_Room"> Double Room </option>
                         <option value=  "Single_Room"> Single Room </option>
                     </select>
@@ -39,10 +39,10 @@
              <p> Select Date :
                 <div class = 'container'>
                     <p> From :
-                        <input type="date" id="from" name="from">
+                        <input type="date" id="from" name="from" min="2018-05-14" max="2019-05-10" required>
                     </p>
                     <p> To :
-                        <input type="date" id="to" name="to">
+                        <input type="date" id="to" name="to" min="2018-05-15" max="2019-05-10" required>
                     </p>
                 </div>
             </p>
@@ -51,7 +51,7 @@
         <div class = "filter">
             <p> Select Days :
                 <div class = 'container'>
-                    <select id='multiple-checkboxes' multiple name="filter[]">
+                    <select id='multiple-checkboxes' multiple name="filter[]" required>
                         <option value='Monday'>Monday</option>
                         <option value='Tuesday'>Tuesday</option>
                         <option value='Wednesday'>Wednesday</option>
@@ -67,7 +67,7 @@
         <div class = 'price'>
             <p> Change Price to :
                 <div class = 'container'>
-                    <input type="text" id = "price" placeholder = "Enter Price" name="price">
+                    <input type="text" id = "price" placeholder = "Enter Price" name="price" required>
                 </div>
             </p>
         </div>
@@ -75,7 +75,7 @@
         <div class = 'availability'>
             <p> Change Availability to :
                 <div class = 'container'>
-                    <input type="text" id = "avail" placeholder = "Enter Availability" name="avail">
+                    <input type="text" id = "avail" placeholder = "Enter Availability" name="avail" required>
                 </div>
             </p>
         </div>
