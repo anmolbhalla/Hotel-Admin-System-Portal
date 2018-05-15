@@ -87,5 +87,129 @@
 
     <script  src="{% static 'hotel_system/main_js.js' %}"></script>
 </form>
+
+<form action="{% url 'month' %}" method ="post">
+
+    {% csrf_token %}
+
+<select onchange="this.form.submit()" name="month">
+{% for months in display_month %}
+    {% ifequal month_compare months.month_year %}
+    <option value= {{ months.month_year }} name="month" selected="selected">
+        {{ months.month_year }}
+    </option>
+    {% else %}
+        <option value= {{ months.month_year }}>
+        {{ months.month_year }}
+    </option>
+        {% endifequal %}
+
+{% endfor %}
+</select>
+</form>
+<table border="6">
+
+    {% csrf_token %}
+
+    <tr>
+        <td>Price and Availability</td>
+        {% for details in Calendar %}
+            <td>{{ details.day }}</td>
+         {% endfor %}
+    </tr>
+    <tr>
+        <td colspan="32" bgcolor="aqua"><b>Single room</b></td>
+    </tr>
+    <tr>
+        <td>
+            Price
+        </td>
+        {% for details in Calendar %}
+            <td contenteditable="true" class="abcd" id={{ details.date }}>{{ details.price_single }}</td>
+         {% endfor %}
+    </tr>
+    <tr>
+        <td>Rooms Available</td>
+         {% for details in Calendar %}
+            <td contenteditable="true" class="abcd" id={{ details.date }}>{{ details.avail_single }}</td>
+         {% endfor %}
+
+    </tr>
+    <tr>
+        <td colspan="32" bgcolor="green"><b>Double Room</b></td>
+    </tr>
+    <tr>
+        <td>Price</td>
+         {% for details in Calendar %}
+            <td contenteditable="true" class="abcd" id={{ details.date }}>{{ details.price_double }}</td>
+         {% endfor %}
+    </tr>
+    <tr>
+        <td>Rooms Available</td>
+         {% for details in Calendar %}
+            <td contenteditable="true" class="abcd" id={{ details.date }}>{{ details.avail_double }}</td>
+         {% endfor %}
+    </tr>
+
+</table>
+
+{#<script>#}
+{##}
+{#  $(document).ready(function () {#}
+{#      $('.editbtn').click(function () {#}
+{#          var currentTD = $(this).parents('tr').find('td');#}
+{#          if ($(this).html() == 'Edit') {#}
+{#              $.each(currentTD, function () {#}
+{#                  $(this).prop('contenteditable', true)#}
+{#              });#}
+{#          } else {#}
+{#             $.each(currentTD, function () {#}
+{#                  $(this).prop('contenteditable', false)#}
+{#              });#}
+{#          }#}
+{##}
+{#          $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')#}
+{##}
+{#      });#}
+{##}
+{#  });#}
+{##}
+{#</script>#}
+<script>
+
+var url = "{% url 'cont' %}";
+
+
+var contents = $('.abcd').html();
+$('.abcd').blur(function () {
+    if (contents != $(this).html()) {
+        {#alert('Handler for .change() call   ed.');#}
+        contents = $(this).attr('id');
+        val = $(this).html();
+        alert(contents);
+        var data = {'name' : contents, 'csrfmiddlewaretoken' : "{{ csrf_token }}"};
+        $.ajax(url, data);
+    }
+
+
+
+
+
+    {#$.ajax({#}
+{#    url: 'cont',#}
+{#    type: 'POST',#}
+{#    data: {abcdefg: con, 'csrfmiddlewaretoken':"{{ csrf_token }}"},#}
+{#{);#}
+
+
+
+});
+
+
+
+
+
+</script>
+
 </body>
 </html>

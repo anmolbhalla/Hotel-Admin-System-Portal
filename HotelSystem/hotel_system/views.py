@@ -1,24 +1,50 @@
 from django.shortcuts import render
 import datetime
-from datetime import timedelta
 from django.shortcuts import HttpResponse
 from hotel_system.models import Hotel
-
+from datetime import datetime,timedelta
+import calendar
+from django.template import loader
 
 def index (request):
-    return render(request , 'hotel_system/main.html')
+
+    Date = datetime.now().date()
+    month = Date.strftime('%h')
+    year_present = Date.strftime('%Y')
+    Calendar = Hotel.objects.filter(month=month, year=year_present)
+    display_month = Hotel.objects.values('month_year').distinct()
+    template = loader.get_template('hotel_system/main.html')
+    context = {
+
+        'Calendar': Calendar,
+        'display_month': display_month,
+        'month_ch': month,
+    }
+    return HttpResponse(template.render(context, request))
+
 
 
 def dbupdate(request):
-    Date = datetime.datetime.now().date() - timedelta(days=1)
-    for i in range(1, 367):
+    Hotel.objects.all().delete()
+    Date = datetime.now().date() - timedelta(days=1)
+    if Date.day > 25:
+        Date += datetime.timedelta(7)
+    Date = Date.replace(day=1)
+    year = int(Date.strftime('%Y')) + 1
+    month_int = datetime.now().month
+    b = calendar.monthrange(year, month_int)
+    value = 366 + b[1]
+    for i in range(1, value):
+        day = Date.strftime("%A")
+        month = Date.strftime('%h')
+        year = Date.strftime('%Y')
+        month_year = month + '-' + year
+        print(Date, day, month, year)
+        insert_data = Hotel(id=i, year=year, month_year=month_year, date=Date, day=day, month=month, avail_single=10,
+                            price_single=1000, avail_double=5, price_double=2000)
+        insert_data.save()
         EndDate = Date + timedelta(days=1)
         Date = EndDate
-        day = Date.strftime("%A")
-
-        insert_data = Hotel(date = EndDate, day = day, avail_single = 10, price_single = 1000, avail_double = 5, price_double = 2000 )
-        insert_data.save()
-
 
     return HttpResponse('Success')
 
@@ -44,5 +70,23 @@ def values (request):
         Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_single=price,avail_single=avail)
         return HttpResponse('Failure',answer)
 
-    # return HttpResponse(answer)
 
+def month (request):
+
+    month_raw=request.POST['month']
+    month_compare=month_raw
+    Calendar = Hotel.objects.filter(month_year=month_raw)
+    display_month=Hotel.objects.values('month_year').distinct()
+    template = loader.get_template('hotel_system/main.html')
+    context = {
+        'Calendar': Calendar,
+        'display_month':display_month,
+        'month_compare':month_compare,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def content (request):
+
+    abcd = request.POST['name']
+    return HttpResponse(abcd)

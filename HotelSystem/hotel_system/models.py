@@ -8,4 +8,6 @@ class Hotel (models.Model):
     avail_single = models.IntegerField()
     price_double = models.IntegerField()
     avail_double = models.IntegerField()
-
+    month=models.TextField(max_length=20, null=True )
+    year=models.IntegerField(null=True)
+    month_year=models.TextField(max_length=20, null = True)
