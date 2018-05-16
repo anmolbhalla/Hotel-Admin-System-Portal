@@ -153,57 +153,43 @@
 
 </table>
 
-{#<script>#}
-{##}
-{#  $(document).ready(function () {#}
-{#      $('.editbtn').click(function () {#}
-{#          var currentTD = $(this).parents('tr').find('td');#}
-{#          if ($(this).html() == 'Edit') {#}
-{#              $.each(currentTD, function () {#}
-{#                  $(this).prop('contenteditable', true)#}
-{#              });#}
-{#          } else {#}
-{#             $.each(currentTD, function () {#}
-{#                  $(this).prop('contenteditable', false)#}
-{#              });#}
-{#          }#}
-{##}
-{#          $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')#}
-{##}
-{#      });#}
-{##}
-{#  });#}
-{##}
-{#</script>#}
 <script>
 
 var url = "{% url 'cont' %}";
 
 
 var contents = $('.abcd').html();
-$('.abcd').blur(function () {
-    if (contents != $(this).html()) {
+$('.abcd').blur(function ()
+{
+    if (contents != $(this).html())
+    {
         {#alert('Handler for .change() call   ed.');#}
         contents = $(this).attr('id');
         val = $(this).html();
-        alert(contents);
-        var data = {'name' : contents, 'csrfmiddlewaretoken' : "{{ csrf_token }}"};
-        $.ajax(url, data);
+        {#alert(contents);#}
+        console.log(contents, val);
+        {#var data = {name: contents, 'csrfmiddlewaretoken': "{{ csrf_token }}"};#}
+        $.ajax
+        ({
+            url : url,
+            type: "POST",
+            data: {name: val, new : contents, csrfmiddlewaretoken: "{{ csrf_token }}"},
+            success : function (json) {
+                alert('Success')
+            },
+            error : function (xhr,errmsg,err) {
+                alert('Error' + xhr.status + ":" + xhr.responseText);
+
+            }
+
+        });
     }
-
-
-
-
-
-    {#$.ajax({#}
-{#    url: 'cont',#}
-{#    type: 'POST',#}
-{#    data: {abcdefg: con, 'csrfmiddlewaretoken':"{{ csrf_token }}"},#}
-{#{);#}
-
-
-
 });
+
+
+
+
+
 
 
 

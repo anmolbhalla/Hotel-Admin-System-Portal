@@ -1,4 +1,4 @@
-from django.shortcuts import render
+import json
 import datetime
 from django.shortcuts import HttpResponse
 from hotel_system.models import Hotel
@@ -88,5 +88,9 @@ def month (request):
 
 def content (request):
 
-    abcd = request.POST['name']
-    return HttpResponse(abcd)
+    innerhtml = request.POST.get('name')
+    idelement = request.POST.get('new')
+    print(innerhtml)
+    print(idelement)
+    return HttpResponse(innerhtml,idelement)
+
