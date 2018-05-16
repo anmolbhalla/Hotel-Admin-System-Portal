@@ -17,7 +17,7 @@
 
 <body>
 
-<form name="hotel" method="post" action={% url 'values' %}>
+<form name="hotel" method="post" onsubmit='myfunction()' action={% url 'values' %}>
 
     {% csrf_token %}
 
@@ -39,10 +39,10 @@
              <p> Select Date :
                 <div class = 'container'>
                     <p> From :
-                        <input type="date" id="from" name="from" min="2018-05-14" max="2019-05-10" required>
+                        <input type="date" id="from" name="from" min="2018-05-1" max="2019-05-31" required>
                     </p>
                     <p> To :
-                        <input type="date" id="to" name="to" min="2018-05-15" max="2019-05-10" required>
+                        <input type="date" id="to" name="to" min="2018-05-1" max="2019-05-31" required>
                     </p>
                 </div>
             </p>
@@ -150,13 +150,19 @@
     <tr>
         <td>Rooms Available</td>
          {% for details in Calendar %}
-            <td contenteditable="true" class="abcd" headers="avail_single" id={{ details.id }}>{{ details.avail_double }}</td>
+            <td contenteditable="true" class="abcd" headers="avail_double" id={{ details.id }}>{{ details.avail_double }}</td>
          {% endfor %}
     </tr>
 
 </table>
 
 <script>
+
+function myfunction() {
+
+    alert('Success')
+
+}
 
 var url = "{% url 'cont' %}";
 
@@ -169,17 +175,16 @@ $('.abcd').blur(function ()
         contents = $(this).attr('id');
         header = $(this).attr('headers');
         val = $(this).html();
-        console.log(contents, val,header);
         $.ajax
         ({
             url : url,
             type: "POST",
             data: {name: val, new : contents, heads : header, csrfmiddlewaretoken: "{{ csrf_token }}"},
-            success : function (json) {
-                alert('Success')
+            success : function () {
+                alert('Value Successfully Updated')
             },
-            error : function (xhr,errmsg,err) {
-                alert('Error' + xhr.status + ":" + xhr.responseText);
+            error : function () {
+                alert('Please Try again');
 
             }
 

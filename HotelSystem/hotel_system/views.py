@@ -4,6 +4,7 @@ from hotel_system.models import Hotel
 from datetime import datetime,timedelta
 import calendar
 from django.template import loader
+from django.shortcuts import redirect
 
 def index (request):
 
@@ -57,18 +58,17 @@ def values (request):
     avail = request.POST['avail']
 
 
-    answer = Hotel.objects.filter(date__range=(from_date,to_date) , day__in=days)
+    # answer = Hotel.objects.filter(date__range=(from_date,to_date) , day__in=days)
 
     if room == 'Double_Room':
 
         Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_double = price , avail_double = avail)
-        return HttpResponse('Success')
+        return redirect(index)
 
     else :
 
         Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_single=price,avail_single=avail)
-        return HttpResponse('Failure')
-
+        return redirect(index)
 
 def month (request):
 
@@ -90,9 +90,6 @@ def content (request):
     innerhtml = request.POST.get('name')
     idelement = request.POST.get('new')
     headers = request.POST.get('heads')
-    print(innerhtml)
-    print(idelement)
-    print(headers)
 
     if (headers == 'price_single'):
 
@@ -102,11 +99,11 @@ def content (request):
 
         Hotel.objects.filter(id=idelement).update(avail_single=innerhtml)
 
-    elif(headers == 'price_double'):
+    elif (headers == 'price_double'):
 
         Hotel.objects.filter(id=idelement).update(price_double=innerhtml)
 
-    else:
+    elif (headers == 'avail_double'):
 
         Hotel.objects.filter(id=idelement).update(avail_double=innerhtml)
 
