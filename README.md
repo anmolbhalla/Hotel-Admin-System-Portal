@@ -13,14 +13,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 Python pip package
 If using python version 2 :
-'''
+```
 sudo apt-get install python-pip
-'''
+```
 
 If using python version 3 :
-'''
+```
 sudo apt-get install python3-pip
-'''
+```
 
 You will need Django framework to run this project smoothly. Go to your terminal and execute the following command or visit [Django](https://www.djangoproject.com/) website.
 
@@ -31,9 +31,9 @@ pip install django
 ```
 
 For python 3 :
-'''
+```
 pip3 install django
-'''
+```
 
 ### Deployment
 
