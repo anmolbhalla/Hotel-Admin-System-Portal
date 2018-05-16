@@ -1,4 +1,3 @@
-import json
 import datetime
 from django.shortcuts import HttpResponse
 from hotel_system.models import Hotel
@@ -63,12 +62,12 @@ def values (request):
     if room == 'Double_Room':
 
         Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_double = price , avail_double = avail)
-        return HttpResponse('Success',answer )
+        return HttpResponse('Success')
 
     else :
 
         Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_single=price,avail_single=avail)
-        return HttpResponse('Failure',answer)
+        return HttpResponse('Failure')
 
 
 def month (request):
@@ -90,7 +89,26 @@ def content (request):
 
     innerhtml = request.POST.get('name')
     idelement = request.POST.get('new')
+    headers = request.POST.get('heads')
     print(innerhtml)
     print(idelement)
-    return HttpResponse(innerhtml,idelement)
+    print(headers)
+
+    if (headers == 'price_single'):
+
+        Hotel.objects.filter(id = idelement).update(price_single = innerhtml)
+
+    elif (headers == 'avail_single'):
+
+        Hotel.objects.filter(id=idelement).update(avail_single=innerhtml)
+
+    elif(headers == 'price_double'):
+
+        Hotel.objects.filter(id=idelement).update(price_double=innerhtml)
+
+    else:
+
+        Hotel.objects.filter(id=idelement).update(avail_double=innerhtml)
+
+    return HttpResponse(idelement,headers)
 
