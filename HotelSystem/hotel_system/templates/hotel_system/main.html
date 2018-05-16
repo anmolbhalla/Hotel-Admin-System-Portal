@@ -114,11 +114,16 @@
     <tr>
         <td>Price and Availability</td>
         {% for details in Calendar %}
-            <td>{{ details.day }}
-                <br>
-                {{ forloop.counter }}
-            </td>
+            <td>{{ details.day }}</td>
+
          {% endfor %}
+    </tr>
+    <tr>
+        <td>Dates</td>
+        {% for details in Calendar %}
+
+            <td align="center">{{ forloop.counter }}</td>
+        {% endfor %}
     </tr>
     <tr>
         <td colspan="32" bgcolor="aqua"><b>Single room</b></td>
@@ -128,13 +133,13 @@
             Price
         </td>
         {% for details in Calendar %}
-            <td contenteditable="true" class="abcd" headers="price_single" id={{ details.id }} >{{ details.price_single }}</td>
+            <td align="center" contenteditable="true" class="abcd" headers="price_single" id={{ details.id }} >{{ details.price_single }}</td>
          {% endfor %}
     </tr>
     <tr>
         <td>Rooms Available</td>
          {% for details in Calendar %}
-            <td contenteditable="true" class="abcd" headers="avail_single" id={{ details.id }}>{{ details.avail_single }}</td>
+            <td align="center" contenteditable="true" class="abcd" headers="avail_single" id={{ details.id }}>{{ details.avail_single }}</td>
          {% endfor %}
 
     </tr>
@@ -144,13 +149,13 @@
     <tr>
         <td>Price</td>
          {% for details in Calendar %}
-            <td contenteditable="true" class="abcd" headers="price_double" id={{ details.id }}>{{ details.price_double }}</td>
+            <td align="center" contenteditable="true" class="abcd" headers="price_double" id={{ details.id }}>{{ details.price_double }}</td>
          {% endfor %}
     </tr>
     <tr>
         <td>Rooms Available</td>
          {% for details in Calendar %}
-            <td contenteditable="true" class="abcd" headers="avail_double" id={{ details.id }}>{{ details.avail_double }}</td>
+            <td align="center" contenteditable="true" class="abcd" headers="avail_double" id={{ details.id }}>{{ details.avail_double }}</td>
          {% endfor %}
     </tr>
 

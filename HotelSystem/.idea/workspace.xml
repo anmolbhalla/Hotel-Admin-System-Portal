@@ -30,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hotel_system/templates/hotel_system/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="182" column="32" selection-start-line="182" selection-start-column="32" selection-end-line="182" selection-end-column="32" />
+            <state relative-caret-position="387">
+              <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -48,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/Test/HotelSystem/hotel_system/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="282">
@@ -97,8 +97,8 @@
         <option value="$PROJECT_DIR$/hotel_system/models.py" />
         <option value="$USER_HOME$/Desktop/Test/HotelSystem/hotel_system/views.py" />
         <option value="$PROJECT_DIR$/hotel_system/urls.py" />
-        <option value="$PROJECT_DIR$/hotel_system/templates/hotel_system/main.html" />
         <option value="$PROJECT_DIR$/hotel_system/views.py" />
+        <option value="$PROJECT_DIR$/hotel_system/templates/hotel_system/main.html" />
       </list>
     </option>
   </component>
@@ -265,9 +265,9 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3293348" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3380589" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3380589" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3293348" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.04228446" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04228446" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -454,13 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotel_system/templates/hotel_system/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="182" column="32" selection-start-line="182" selection-start-column="32" selection-end-line="182" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hotel_system/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
@@ -497,6 +490,13 @@
             <element signature="e#0#35#0" expanded="true" />
             <element signature="e#1296#1411#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel_system/templates/hotel_system/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="157" column="31" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
         </state>
       </provider>
     </entry>
