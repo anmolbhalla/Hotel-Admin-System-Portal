@@ -11,11 +11,29 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
+Python pip package
+If using python version 2 :
+'''
+sudo apt-get install python-pip
+'''
+
+If using python version 3 :
+'''
+sudo apt-get install python3-pip
+'''
+
 You will need Django framework to run this project smoothly. Go to your terminal and execute the following command or visit [Django](https://www.djangoproject.com/) website.
 
+
+For python 2 :
 ```
 pip install django
 ```
+
+For python 3 :
+'''
+pip3 install django
+'''
 
 ### Deployment
 
@@ -25,19 +43,19 @@ A step by step series of examples that tells what you have to do to get this pro
 * Make migrations for the project -
 
 ```
-python manage.py makemigrations
+python/python3 manage.py makemigrations
 ```
 
 * Migrate the changes -
 
 ```
-python manage.py migrate
+python/python3 manage.py migrate
 ```
 
 * Create SuperUser-
 
 ```
-python manage.py createsuperuser
+python/python3 manage.py createsuperuser
 
 Provide username, email and password and remember it.
 
@@ -46,7 +64,7 @@ Provide username, email and password and remember it.
 * Run the server -
 
 ```
-python manage.py runserver
+python/python3 manage.py runserver
 ```
 
 * Access http://127.0.0.1:8000/home on your browser to use the application.
