@@ -46,7 +46,7 @@ def dbupdate(request):
         EndDate = Date + timedelta(days=1)
         Date = EndDate
 
-    return HttpResponse('Success')
+    return redirect(index)
 
 def values (request):
 
