@@ -37,6 +37,10 @@ pip3 install django
 
 ### Deployment
 
+* Execute Deployment_Script.sh and there you go !!!.
+
+OR
+
 A step by step series of examples that tells what you have to do to get this project running -
 
 * Enter the project directory.
@@ -71,7 +75,7 @@ python/python3 manage.py runserver
 
 ### Usage
 
-* Firstly Access http://127.0.0.1:800/home/db to establish the database.
+* First go to  http://127.0.0.1:800/home/db to establish the database.
 * The calender on home shows the values from the databse. SOme default is being set.
 
 ![Screenshot](/Screenshots/Screenshot%20from%202018-05-16%2020-09-34.png)
