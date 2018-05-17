@@ -5,9 +5,13 @@ from datetime import datetime,timedelta
 import calendar
 from django.template import loader
 from django.shortcuts import redirect
+import logging
+
+logger = logging.getLogger('hotel_logger')
 
 def index (request):
 
+    logger.error('Homepage')
     Date = datetime.now().date()
     month = Date.strftime('%h')
     year_present = Date.strftime('%Y')
@@ -25,6 +29,7 @@ def index (request):
 
 
 def dbupdate(request):
+    logger.error('Db populate')
     Hotel.objects.all().delete()
     Date = datetime.now().date() - timedelta(days=1)
     if Date.day > 25:
@@ -49,7 +54,6 @@ def dbupdate(request):
     return redirect(index)
 
 def values (request):
-
     room = request.POST['room_type']
     from_date = request.POST['from']
     to_date =  request.POST['to']
@@ -58,16 +62,16 @@ def values (request):
     avail = request.POST['avail']
 
 
-    # answer = Hotel.objects.filter(date__range=(from_date,to_date) , day__in=days)
 
     if room == 'Double_Room':
-
+        logger.error('User selected Double room')
         Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_double = price , avail_double = avail)
+        logger.error('Db update for double Room')
         return redirect(index)
 
     else :
-
         Hotel.objects.filter(date__range=(from_date, to_date), day__in=days).update(price_single=price,avail_single=avail)
+        logger.error('Db update for single Room')
         return redirect(index)
 
 def month (request):
@@ -82,6 +86,7 @@ def month (request):
         'display_month':display_month,
         'month_compare':month_compare,
     }
+    logger.error('User changed a month for calender view')
     return HttpResponse(template.render(context, request))
 
 
@@ -92,19 +97,19 @@ def content (request):
     headers = request.POST.get('heads')
 
     if (headers == 'price_single'):
-
         Hotel.objects.filter(id = idelement).update(price_single = innerhtml)
+        logger.error('User edited single room price from calender')
 
     elif (headers == 'avail_single'):
-
+        logger.error('User edited single room availability from calender')
         Hotel.objects.filter(id=idelement).update(avail_single=innerhtml)
 
     elif (headers == 'price_double'):
-
+        logger.error('User edited double room price from calender')
         Hotel.objects.filter(id=idelement).update(price_double=innerhtml)
 
     elif (headers == 'avail_double'):
-
+        logger.error('User edited double room availability from calender')
         Hotel.objects.filter(id=idelement).update(avail_double=innerhtml)
 
     return HttpResponse(idelement,headers)

@@ -186,11 +186,12 @@ $('.abcd').blur(function ()
             type: "POST",
             data: {name: val, new : contents, heads : header, csrfmiddlewaretoken: "{{ csrf_token }}"},
             success : function () {
-                alert('Value Successfully Updated')
+                alert('Value Successfully Updated');
+                location.reload();
             },
             error : function () {
                 alert('Please Try again');
-
+                location.reload();
             }
 
         });
